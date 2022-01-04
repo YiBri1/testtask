@@ -18,3 +18,4 @@ EOF
 
 sudo service httpd start
 chkconfig httpd on
+echo "Hi"

@@ -5,7 +5,7 @@ application = Flask(__name__)
 
 @application.route("/")
 def root():
-    return render_template("My_data.sh")
+    return render_template("my_data.sh")
 
 @application.route("/hello")
 def index():

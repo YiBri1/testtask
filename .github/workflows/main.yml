@@ -9,7 +9,8 @@ env:
 on: 
   push:
     branches: 
-      - master
+      - main
+      workflow_dispatch:
 jobs:
     my_ci_pipeline:
        runs-on: ubuntu-latest

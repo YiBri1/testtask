@@ -1,24 +1,22 @@
-name: CI-CD-pipeline
+name: CI-CD-Pipeline-to-AWS-ElasticBeanstalk
 env:
-EB_PACKAGE_S3_BUCKET_NAME : "gitservice"
-EB_APPLICATION_NAME : "Gitserviceapp"
-EB_ENVIRONMENT_NAME : "Gitserviceapp-env"
-DEPLOY_PACKAGE_NAME : "flask_app_${{ github.sha }}.zip"
-AWS_REGION_NAME : "eu-cantral-1"
+  EB_PACKAGE_S3_BUCKET_NAME : "gitservice"
+  EB_APPLICATION_NAME       : "Gitserviceapp"
+  EB_ENVIRONMENT_NAME       : "Gitserviceapp-env"
+  DEPLOY_PACKAGE_NAME       : "flask-app-${{ github.sha }}.zip"
+  AWS_REGION_NAME           : "eu-central-1"
 
-on:
+on: 
   push:
     branches: 
-    - master
-
- # workflow_dispatch:
-
+      - master
 jobs:
-my_ci_part:
- runs-on: ubuntu-latest
- 
- steps:
- - name: Git_clone_repo
- uses: actions/checkout@v2
- - name: Greate_zip_deployment_package
- run: zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
+    my_ci_pipeline:
+       runs-on: ubuntu-latest
+       
+       steps:
+         - name: Git clone our repository
+           uses: actions/checkout@v1
+            
+         - name: Create ZIP deployment package
+           run : zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./  -x  *.git*
